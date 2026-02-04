@@ -5,21 +5,20 @@ const rl  = readline.Interface({
     output: process.stdout
 });
 
-function reverseNumber(value){
-    let reverseNumber = 0;
+function numberCounter(value){
+    let counter = 0;
     let num = parseInt(value);
 
     while (num > 0) {
-        reverseNumber = (reverseNumber * 10) + (num % 10);
+        counter += (num % 10);
         num = Math.floor(num / 10);
     }
 
-    return reverseNumber;
+    return counter;
 }
 
-rl.question("Enter Number", (answer) => {
-    
-    console.log(reverseNumber(answer))
+rl.question("Enter number", (answer) => {
+    console.log(numberCounter(answer))
     rl.close();
 })
 

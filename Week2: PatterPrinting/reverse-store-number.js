@@ -7,11 +7,14 @@ const rl = readline.createInterface({
 });
 
 rl.on('line', (input) => {
-    let n = Number(input);
+    let n = BigInt(input);
     
-    for(let i = 1; i <= n; i++) {
-        console.log(i);
+    let ans = 0n;
+    while(n !== 0n){
+        ans = (ans * 10n) + (n % 10n);
+        n = n / 10n;
     }
     
+    console.log(ans.toString());
     rl.close();
 });
