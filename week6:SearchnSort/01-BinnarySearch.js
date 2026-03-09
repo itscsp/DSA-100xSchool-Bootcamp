@@ -1,16 +1,39 @@
-let arr = [1, 3, 5, 7, 9, 11, 13]
-let search = 11
-let f = 0
-let l = arr.length - 1
 
-while(f <= l){
-    let mid = Math.floor((f + l) / 2)
-    if(arr[mid] === search){
-        console.log(mid)
-        break;
-    } else if (arr[mid] < search) {
-        f = mid + 1;
-    } else {
-        l = mid - 1
+const readline = require('readline');
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+})
+
+let lines = []
+
+rl.on('line', (line) => {
+    lines.push(line.trim());
+})
+
+rl.on('close', () => {
+    const arrLength = parseInt(lines[0])
+    const arrElement = lines[1].split(' ').map(Number);
+    const searchEle = parseInt(lines[2])
+
+    let f = 0
+    let l = arrLength
+
+    while(f <= l){
+        let mid = Math.floor((f + l) / 2)
+
+        if(arrElement[mid] === searchEle){
+            console.log('Yes')
+            return;
+        } else if (arrElement[mid] < searchEle) {
+            f = mid + 1;
+        } else {
+            l = mid - 1
+        }
     }
-}
+
+    console.log('No')
+    return;
+
+})
