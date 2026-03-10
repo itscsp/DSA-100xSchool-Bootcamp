@@ -1,4 +1,3 @@
-
 const readline = require("readline");
 
 const rl = readline.createInterface({
@@ -14,35 +13,35 @@ rl.on("line", (line) => {
 
 rl.on("close", () => {
 
-  // first line
   let [n, m] = lines[0].split(" ").map(Number);
 
   let matrix = [];
 
-  // next n lines
   for (let i = 1; i <= n; i++) {
     matrix.push(lines[i].split(" ").map(Number));
   }
 
-  let result = []
-  for(let i = 0; i<n; i++){
-    
-    let counter = 0    
-    for(let j = 0; j<m; j++){
-          if(matrix[i][j] == 1){
-            counter++
-          }
-    }
-    result[i] = counter;
-  }
+  let maxCount = 0;
+  let maxIndex = 0;
 
-  maxEle = result[0]
-  for(let i =0; i < result.length; i++){
-      if(result[i] > maxEle){
-        maxEle = matrix[i]
+  for (let i = 0; i < n; i++) {
+    let counter = 0;
+
+    for (let j = 0; j < m; j++) {
+      if (matrix[i][j] === 1) {
+        counter++;
       }
+    }
+
+    if (counter > maxCount) {
+      maxCount = counter;
+      maxIndex = i;
+    }
   }
 
-  console.log(maxEle)
-  
+if(maxIndex == 0){
+  console.log(-1)
+} else {
+  console.log(maxIndex)
+}
 });
