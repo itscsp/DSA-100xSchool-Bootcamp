@@ -24,7 +24,7 @@ rl.on('close', () => {
         let mid = Math.floor((f + l) / 2)
 
         if(arrElement[mid] === searchEle){
-            console.log('Yes')
+            console.log('YES')
             return;
         } else if (arrElement[mid] < searchEle) {
             f = mid + 1;
@@ -33,7 +33,7 @@ rl.on('close', () => {
         }
     }
 
-    console.log('No')
+    console.log('NO')
     return;
 
 })
